@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sweety Passi — Software Developer</title>
+  <meta name="description" content="Sweety Passi — Backend Developer | .NET | Power Platform | Freelance" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  :root{
+    --bg:#0b0f13;
+    --card:#0f1720;
+    --muted:#9aa6b2;
+    --accent:#00d4ff;
+    --glass: rgba(255,255,255,0.03);
+    --radius:14px;
+    --glass-2: rgba(255,255,255,0.02);
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,#07090b 0%, #0b0f13 100%);
+    color:#e6eef6;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    font-size:16px;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:28px;}
+  .topbar{position:sticky;top:0;z-index:50;backdrop-filter: blur(6px);background:linear-gradient(180deg, rgba(11,15,19,0.6), rgba(11,15,19,0.35));border-bottom:1px solid rgba(255,255,255,0.03);}
+  .topbar .container{display:flex;gap:16px;align-items:center;}
+  .brand{color:var(--accent);font-weight:700;text-decoration:none;font-size:18px;}
+  .nav{margin-left:auto;display:flex;gap:16px;}
+  .nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600;}
+  .nav a:hover{color:#fff;background:var(--glass-2)}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--muted);margin:5px 0;border-radius:2px;}
+  .hero{padding:60px 0;}
+  .hero-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start;}
+  .hero-content h1{margin:0 0 6px;font-size:34px;letter-spacing:-0.5px;}
+  .subtitle{color:var(--accent);font-weight:600;margin:6px 0 12px}
+  .lead{color:var(--muted);margin-bottom:18px}
+  .cta-row{display:flex;gap:10px;margin-bottom:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:700;text-decoration:none;cursor:pointer;border:1px solid transparent;}
+  .btn-primary{background: linear-gradient(90deg, rgba(0,212,255,0.12), rgba(0,212,255,0.06)); color:var(--accent); border:1px solid rgba(0,212,255,0.12)}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,0.03)}
+  .quick-info{list-style:none;padding:0;margin:12px 0 0;color:var(--muted)}
+  .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:18px;border:1px solid rgba(255,255,255,0.03);}
+  .card-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .initials{width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent), rgba(0,212,255,0.08));color:#001e22;font-weight:800;font-size:18px;}
+  .card-section h4{margin:0 0 6px;color:var(--accent)}
+  .card-section p{margin:0;color:var(--muted)}
+  .section{padding:40px 0}
+  .dark-section{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border-top:1px solid rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.02)}
+  .about-grid{display:flex;gap:20px;align-items:flex-start}
+  .metrics{display:flex;gap:18px}
+  .metric{background:var(--card);padding:14px;border-radius:12px;min-width:120px}
+  .metric .num{font-size:20px;font-weight:700;color:var(--accent)}
+  .metric .label{color:var(--muted);font-size:13px}
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .skill{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .skill h4{margin:0 0 6px;color:var(--accent)}
+  .skill p{margin:0;color:var(--muted)}
+  .timeline{display:flex;flex-direction:column;gap:18px}
+  .timeline-item{display:flex;gap:18px;align-items:flex-start}
+  .timeline-item .time{min-width:140px;color:var(--muted);font-weight:700}
+  .timeline-item .info{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .project-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .project-card h4{margin:0 0 8px;color:var(--accent)}
+  .p-meta{color:var(--muted);margin-top:10px;font-size:13px}
+  .education-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+  .education-grid h4{margin-bottom:6px}
+  .contact-grid{display:grid;grid-template-columns:1fr 520px;gap:18px}
+  .contact-info{list-style:none;padding:0;margin:0;color:var(--muted)}
+  .contact-info li{margin:8px 0}
+  .contact-form{background:var(--card);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+  .contact-form label{display:block;margin-bottom:10px;color:var(--muted)}
+  .contact-form input, .contact-form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color: #eaf6ff;}
+  .form-row{display:flex;gap:12px;margin-top:6px}
+  .form-note{color:var(--muted);font-size:13px;margin-top:10px}
+  .site-footer{padding:22px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr}
+    .education-grid{grid-template-columns:1fr}
+    .projects-grid{grid-template-columns:1fr}
+    .contact-grid{grid-template-columns:1fr}
+    .skill-grid{grid-template-columns:1fr}
+    .nav{display:none}
+    .nav-toggle{display:block;margin-left:auto}
+  }
+  @media (max-width:560px){
+    .container{padding:18px}
+    .hero-content h1{font-size:26px}
+    .brand{font-size:16px}
+  }
+  /* Thank you view */
+  .thankyou-view{display:none;padding:60px 0;text-align:center}
+  .thankyou-card{max-width:700px;margin:0 auto;background:var(--card);padding:28px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="#hero">Sweety Passi</a>
+      <nav id="nav" class="nav">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <h1>Sweety Passi</h1>
+          <p class="subtitle">Backend Developer • .NET & C# • Power Platform • SQL</p>
+          <p class="lead">
+            Dynamic and motivated developer with strong teamwork and communication skills.
+            I build scalable backend services, automate workflows with Power Platform, and integrate systems using modern stacks.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Hire me</a>
+            <a class="btn btn-ghost" href="mailto:sweetypassi25@gmail.com">Email</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/sweety-passi-b3266a25a/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <ul class="quick-info">
+            <li><strong>Location:</strong> Naihati, North 24 PGS</li>
+            <li><strong>Phone:</strong> 8100373502</li>
+            <li><strong>Availability:</strong> Immediate</li>
+          </ul>
+        </div>
+
+        <aside class="hero-card">
+          <div class="card-head">
+            <div class="initials">SP</div>
+            <div>
+              <h3>Freelance Backend Developer</h3>
+              <p>.NET • C# • Power Apps • SQL • Azure DevOps</p>
+            </div>
+          </div>
+
+          <div class="card-section">
+            <h4>Key Tools</h4>
+            <p>Visual Studio · SSMS · PyCharm · Azure · Office 365</p>
+          </div>
+
+          <div class="card-section">
+            <h4>Languages</h4>
+            <p>English · Hindi · Bengali</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="section container">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div>
+          <p>
+            I’m a backend-focused developer with hands-on experience building RESTful APIs in C#/.NET,
+            developing Power Apps and automations with Microsoft Power Platform, and working with MySQL/PostgreSQL.
+            I enjoy solving problems that improve workflows and deliver tangible business value.
+          </p>
+          <p>I’m available for freelance backend, Power Platform automation, API integration, and small-to-medium web projects.</p>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="num">2+</div>
+            <div class="label">Internship Experience</div>
+          </div>
+          <div class="metric">
+            <div class="num">Multiple</div>
+            <div class="label">Projects with Power Platform</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section dark-section">
+      <div class="container">
+        <h2>Skills & Tools</h2>
+        <div class="skill-grid">
+          <div class="skill">
+            <h4>Languages</h4>
+            <p>C#, Python, SQL</p>
+          </div>
+          <div class="skill">
+            <h4>Backend</h4>
+            <p>.NET Framework, REST APIs, MySQL, PostgreSQL</p>
+          </div>
+          <div class="skill">
+            <h4>Power Platform</h4>
+            <p>Power Apps, Power Automate, SharePoint integration</p>
+          </div>
+          <div class="skill">
+            <h4>Dev Tools</h4>
+            <p>Azure DevOps, Visual Studio, SSMS, PyCharm</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="section container">
+      <h2>Work Experience</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="time">Sep 2024 – Present</div>
+          <div class="info">
+            <h3>Software Developer Intern — Sigilotech Private Ltd</h3>
+            <ul>
+              <li>Backend development using C# and .NET; designed RESTful APIs.</li>
+              <li>Built Power Apps screens & integrated with SharePoint for internal tools (Rewards App).</li>
+              <li>Worked with MySQL & PostgreSQL; used Azure DevOps for CI/CD and version control.</li>
+              <li>Built an e-commerce app using Microsoft 365 + Power Automate for order & inventory automation.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="time">Feb 2024 – Apr 2024</div>
+          <div class="info">
+            <h3>Software Developer Intern — HashedBit Innovations</h3>
+            <ul>
+              <li>Built a fully responsive contact page with forms & maps for improved client communication.</li>
+              <li>Ensured cross-browser and device compatibility.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section dark-section">
+      <div class="container">
+        <h2>Selected Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <h4>Rewards App (Internal)</h4>
+            <p>Power Apps front-end integrated with SharePoint for employee rewards and recognition. Automated workflows using Power Automate.</p>
+            <div class="p-meta">Tech: Power Apps · SharePoint · Power Automate</div>
+          </div>
+
+          <div class="project-card">
+            <h4>E-commerce App (Microsoft 365 + Power Automate)</h4>
+            <p>Order handling and inventory automation built with MS 365 connectors and Power Automate flows for streamlined business processes.</p>
+            <div class="p-meta">Tech: Power Automate · Microsoft 365 · SQL</div>
+          </div>
+
+          <div class="project-card">
+            <h4>Contact Page (Responsive)</h4>
+            <p>Responsive contact form with map and validation — improved client reachability and UX. Implemented cross-browser compatibility.</p>
+            <div class="p-meta">Tech: HTML/CSS/JS</div>
+          </div>
+
+          <div class="project-card">
+            <h4>Gyanshala.com (Smart India Hackathon)</h4>
+            <p>Collaborative hackathon project to build an education platform prototype — participated in Smart India Hackathon.</p>
+            <div class="p-meta">Tech: Web stack (team project)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="section container">
+      <h2>Education & Certifications</h2>
+      <div class="education-grid">
+        <div>
+          <h4>Master of Computer Applications (MCA)</h4>
+          <p>West Bengal University Of Technology — July 2022 – June 2024 · CGPA: 7.5</p>
+          <h4>Bachelor of Science</h4>
+          <p>West Bengal State University — July 2019 – June 2022 · CGPA: 8.9</p>
+        </div>
+
+        <div>
+          <h4>Certifications & Training</h4>
+          <ul>
+            <li>Industrial training in PHP — Ejob Training Center</li>
+            <li>Natural Language Processing — IIT Kharagpur (cleared)</li>
+            <li>Participated: Cloud Bootcamp (GeeksForGeeks)</li>
+          </ul>
+
+          <h4>Achievements</h4>
+          <ul>
+            <li>Smart India Hackathon — Gyanshala.com</li>
+            <li>AIR-165 in Source-o-code (Coding Ninjas)</li>
+            <li>Selected — Infosys Springboost Program (First Cohort)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section dark-section">
+      <div class="container contact-grid">
+        <div>
+          <h2>Contact</h2>
+          <p>Looking for freelance help on backend development, Power Platform automation, or small web projects? Let’s talk.</p>
+          <ul class="contact-info">
+            <li><strong>Email:</strong> <a href="mailto:sweetypassi25@gmail.com">sweetypassi25@gmail.com</a></li>
+            <li><strong>Phone:</strong> 8100373502</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sweety-passi-b3266a25a/" target="_blank" rel="noopener">LinkedIn Profile</a></li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="contact-form">
+          <label>
+            <span>Name</span>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" id="email" name="email" required placeholder="you@example.com" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          </label>
+          <!-- hidden fields -->
+          <input type="hidden" name="_subject" value="Freelance Inquiry via Portfolio">
+          <input type="hidden" name="_captcha" value="false">
+          <div class="form-row">
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <button type="button" class="btn btn-ghost" onclick="location.href='mailto:sweetypassi25@gmail.com'">Email directly</button>
+          </div>
+          <p class="form-note">This form sends messages to sweetypassi25@gmail.com securely via FormSubmit.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="thankyou" class="thankyou-view">
+      <div class="thankyou-card">
+        <h2>Thank you!</h2>
+        <p>Thank you! Your message has been sent successfully. I’ll get back to you soon.</p>
+        <p style="margin-top:12px"><a class="btn btn-primary" href="#hero">Back to homepage</a></p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Sweety Passi — Built for freelancing • <a href="#hero">top</a></p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const y = new Date().getFullYear();
+    document.getElementById('year').textContent = y;
+
+    const navToggle = document.getElementById('navToggle');
+    const nav = document.getElementById('nav');
+    navToggle.addEventListener('click', function(){
+      if(nav.style.display === 'flex') {
+        nav.style.display = '';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.background = 'rgba(255,255,255,0.02)';
+        nav.style.padding = '8px';
+        nav.style.borderRadius = '10px';
+        nav.style.position = 'absolute';
+        nav.style.right = '20px';
+        nav.style.top = '62px';
+      }
+    });
+
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      // prepare form data
+      const data = new FormData(form);
+      // include fields expected by FormSubmit
+      data.append('name', document.getElementById('name').value);
+      data.append('email', document.getElementById('email').value);
+      data.append('message', document.getElementById('message').value);
+      data.append('_subject', 'Freelance Inquiry via Portfolio');
+      data.append('_captcha', 'false');
+
+      try {
+        const resp = await fetch('https://formsubmit.co/sweetypassi25@gmail.com', {
+          method: 'POST',
+          body: data,
+          mode: 'cors'
+        });
+        // FormSubmit responds with a redirect; treat 200-299 as ok
+        if (resp.ok || resp.status === 302 || resp.status === 0) {
+          // show internal thank you section
+          location.href = '#thankyou';
+          // optionally scroll
+          document.getElementById('thankyou').scrollIntoView({behavior:'smooth'});
+        } else {
+          alert('Submission failed — please try emailing directly to sweetypassi25@gmail.com');
+        }
+      } catch (err) {
+        alert('Submission failed — please try emailing directly to sweetypassi25@gmail.com');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send message';
+      }
+    });
+  });
+  </script>
+</body>
+</html>
