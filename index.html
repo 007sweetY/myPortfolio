@@ -328,9 +328,9 @@
           <input type="hidden" name="_captcha" value="false">
           <div class="form-row">
             <button type="submit" class="btn btn-primary">Send message</button>
-            <button type="button" class="btn btn-ghost" onclick="location.href='mailto:sweetypassi25@gmail.com'">Email directly</button>
+            <button type="button" class="btn btn-ghost" onclick="location.href='mailto:sweety.io.dev@gmail.com'">Email directly</button>
           </div>
-          <p class="form-note">This form sends messages to sweetypassi25@gmail.com securely via FormSubmit.</p>
+          <p class="form-note">This form sends messages to sweety.io.dev@gmail.com securely via FormSubmit.</p>
         </form>
       </div>
     </section>
@@ -389,7 +389,7 @@
       data.append('_captcha', 'false');
 
       try {
-        const resp = await fetch('https://formsubmit.co/sweetypassi25@gmail.com', {
+        const resp = await fetch('https://formsubmit.co/sweety.io.dev@gmail.com', {
           method: 'POST',
           body: data,
           mode: 'cors'
@@ -401,10 +401,10 @@
           // optionally scroll
           document.getElementById('thankyou').scrollIntoView({behavior:'smooth'});
         } else {
-          alert('Submission failed — please try emailing directly to sweetypassi25@gmail.com');
+          alert('Submission failed — please try emailing directly to sweety.io.dev@gmail.com');
         }
       } catch (err) {
-        alert('Submission failed — please try emailing directly to sweetypassi25@gmail.com');
+        alert('Submission failed — please try emailing directly to sweety.io.dev@gmail.com');
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Send message';
